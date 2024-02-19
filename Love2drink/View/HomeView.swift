@@ -48,6 +48,7 @@ struct Home {
         mutating func updatedDrinks() {
             let drinks = CacheUtil.getDrinks()
             drink.drinks = drinks
+            charts.drinks = drinks
         }
     }
     enum Action: Equatable {
@@ -99,7 +100,9 @@ struct HomeView: View {
     let store: StoreOf<Home>
     var body: some View {
         VStack{
-            _ContentView(store: store)
+            ScrollView(showsIndicators: false){
+                _ContentView(store: store)
+            }
             _TabbarItemView(store: store)
             
         }.background

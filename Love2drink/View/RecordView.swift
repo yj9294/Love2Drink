@@ -62,7 +62,7 @@ struct Record {
                 state.updateItem(item)
             }
             if case .saveButtonTapped = action {
-                if let ml = Int(state.ml) {
+                if let ml = Int(state.ml), ml > 0 {
                     state.appedDrinks(ml: ml)
                     return .run { send in
                         await send(.updatedDrinks)

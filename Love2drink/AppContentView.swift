@@ -63,7 +63,7 @@ struct AppContentView: View {
                 }
             }
         }.onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification), perform: { _ in
-            store.send(.updateLoading(false))
+            store.send(.updateLoading(true))
         })
     }
 }

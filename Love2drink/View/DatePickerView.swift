@@ -70,13 +70,12 @@ class DateView: UIView {
     weak var delegate: DateViewDelegate?
     var selectedHours = 0
     var selectedMine = 0
-    var hours:[Int] = Array(0..<13)
+    var hours:[Int] = Array(0..<24)
     var minu: [Int] = Array(0..<60)
     @IBOutlet weak var hourView: UIPickerView!
     @IBOutlet weak var minuView: UIPickerView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        hours.append(contentsOf: Array(1..<12))
     }
     
     @IBAction func saveAction() {

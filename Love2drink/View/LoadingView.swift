@@ -47,6 +47,8 @@ struct Loading {
                 state.updateDuration(duration)
             }
             if case .start = action {
+                state.updateDuration(3.0)
+                state.updateProgress(0.0)
                 let publisher = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect().map { _ in
                     Action.update
                 }
