@@ -14,9 +14,11 @@ struct Profile {
     @ObservableState
     struct State: Equatable {
         
+        var ad: GADNativeViewModel = .none
+        
         @Presents var reminder: Reminder.State?
         mutating func presetnReminder() {
-            reminder = .init()
+            reminder = .init(ad: ad)
         }
         
         @Presents var detail: Detail.State?
@@ -68,7 +70,9 @@ struct ProfileView: View {
         VStack{
             _NavigationBar()
             WithPerceptionTracking {
-                _ContentView(store: store)
+                ScrollView(showsIndicators: false, content: {
+                    _ContentView(store: store)
+                })
             }
             Spacer()
         }.background

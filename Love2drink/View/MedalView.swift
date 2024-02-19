@@ -27,9 +27,13 @@ struct MedalView: View {
     var body: some View {
         VStack{
             _NavigationBar(store: store)
-            _ContinuousView()
-            _AchievementView()
-            Spacer()
+            ScrollView(showsIndicators: false){
+                VStack{
+                    _ContinuousView()
+                    _AchievementView()
+                    Spacer()
+                }
+            }
         }.background
     }
     

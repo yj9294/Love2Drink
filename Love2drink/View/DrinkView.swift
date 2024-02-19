@@ -7,12 +7,16 @@
 
 import ComposableArchitecture
 import SwiftUI
+import GADUtil
+import Combine
 
 
 @Reducer
 struct Drink{
     @ObservableState
     struct State: Equatable {
+        
+        var ad: GADNativeViewModel = .none
         
         var drinks: [DrinkModel] = CacheUtil.getDrinks(){
             didSet{
@@ -55,6 +59,8 @@ struct Drink{
         case presentGoalView
         case presentRecordView
         
+        case showInterAD
+        
         case dailyGoal(PresentationAction<DailyGoal.Action>)
         case record(PresentationAction<Record.Action>)
     }
@@ -86,6 +92,17 @@ struct Drink{
             if case .presentRecordView = action {
                 state.presentRecordView()
             }
+            if case .showInterAD = action {
+                let pulbisher = Future<Action, Never> { promise in
+                    GADUtil.share.load(.interstitial)
+                    GADUtil.share.show(.interstitial) { _ in
+                        promise(.success(.presentGoalView))
+                    }
+                }
+                return .publisher {
+                    pulbisher
+                }
+            }
             return .none
         }.ifLet(\.$dailyGoal, action: \.dailyGoal) {
             DailyGoal()
@@ -104,8 +121,15 @@ struct DrinkView: View {
                 Image("drink_title").frame(height: 44)
                 _ContentView(store: store).padding(.top, 30)
                 Spacer()
+                HStack{
+                    WithPerceptionTracking {
+                        GADNativeView(model: store.ad)
+                    }
+                }.padding(.horizontal, 20).frame(height: 116)
             }.background.onAppear(perform: {
                 store.send(.startRotation)
+                GADUtil.share.disappear(.native)
+                GADUtil.share.load(.native)
             }).onDisappear(perform: {
                 store.send(.stopRotation)
             }).fullScreenCover(item: $store.scope(state: \.dailyGoal, action: \.dailyGoal)) { store in
@@ -145,7 +169,7 @@ struct DrinkView: View {
         let store: StoreOf<Drink>
         var body: some View {
             VStack(spacing: 36){
-                Button(action: { store.send(.presentGoalView) }, label: {
+                Button(action: { store.send(.showInterAD) }, label: {
                     ZStack(alignment: .bottom){
                         Image("drink_goal")
                         HStack{

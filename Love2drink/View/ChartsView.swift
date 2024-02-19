@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import ComposableArchitecture
+import GADUtil
 
 @Reducer
 struct Charts {
@@ -20,6 +21,9 @@ struct Charts {
     
     @ObservableState
     struct State: Equatable {
+        
+        var ad: GADNativeViewModel = .none
+        
         var drinks: [DrinkModel] = CacheUtil.getDrinks()
         
         var item: Item = .dayly
@@ -189,10 +193,20 @@ struct ChartsView: View {
             VStack{
                 _NavigationBar(store: store)
                 _TopBarView(store: store)
-                _ContentView(store: store)
+                ScrollView{
+                    _ContentView(store: store)
+                }
                 Spacer()
+                HStack{
+                    WithPerceptionTracking {
+                        GADNativeView(model: store.ad)
+                    }
+                }.padding(.horizontal, 20).frame(height: 116)
             }.background.fullScreenCover(item: $store.scope(state: \.history, action: \.history)) { store in
                 HistoryView(store: store)
+            }.onAppear{
+                GADUtil.share.disappear(.native)
+                GADUtil.share.load(.native)
             }
         }
     }

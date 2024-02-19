@@ -48,4 +48,12 @@ struct CacheUtil {
         
         getReminders().forEach({NotificationHelper.shared.appendReminder($0.title)})
     }
+    
+    static func getImpressionDate(_ item: Home.Item) -> Date {
+        UserDefaults.standard.getObject(Date.self, forKey: item.rawValue) ?? Date().addingTimeInterval(-11)
+    }
+    
+    static func setImpressionDate(_ item: Home.Item, date: Date) {
+        UserDefaults.standard.setObject(date, forKey: item.rawValue)
+    }
 }

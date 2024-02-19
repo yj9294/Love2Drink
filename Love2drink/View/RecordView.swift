@@ -7,7 +7,9 @@
 
 import Foundation
 import SwiftUI
+import Combine
 import ComposableArchitecture
+import GADUtil
 
 @Reducer
 struct Record {
@@ -45,6 +47,7 @@ struct Record {
         case saveButtonTapped
         case didSelected(Item)
         
+        case showInterAD
         case updatedDrinks
     }
     
@@ -54,6 +57,8 @@ struct Record {
         BindingReducer()
         Reduce{ state, action in
             if case .dismissButtonTapped = action {
+                GADUtil.share.disappear(.native)
+                GADUtil.share.load(.native)
                 return .run { _ in
                     await dismiss()
                 }
@@ -68,6 +73,17 @@ struct Record {
                         await send(.updatedDrinks)
                         await self.dismiss()
                     }
+                }
+            }
+            if case .showInterAD = action {
+                let pulbisher = Future<Action, Never> { promise in
+                    GADUtil.share.load(.interstitial)
+                    GADUtil.share.show(.interstitial) { _ in
+                        promise(.success(.saveButtonTapped))
+                    }
+                }
+                return .publisher {
+                    pulbisher
                 }
             }
             return .none
@@ -99,7 +115,7 @@ struct RecordView: View {
                 
                 HStack{
                     Spacer()
-                    Button(action: {store.send(.saveButtonTapped)}, label: {
+                    Button(action: {store.send(.showInterAD)}, label: {
                         Text("Save").foregroundStyle(.black).background(Image("record_button")).font(.system(size: 14.0)).padding(.trailing, 35)
                     })
                 }

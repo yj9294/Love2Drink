@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Combine
+import GADUtil
 import ComposableArchitecture
 
 
@@ -33,6 +34,7 @@ struct Loading {
         case start
         case update
         case end
+        case showLoadingAD
         
         // data to super view
         case launched
@@ -47,8 +49,11 @@ struct Loading {
                 state.updateDuration(duration)
             }
             if case .start = action {
-                state.updateDuration(3.0)
+                state.updateDuration(13.0)
                 state.updateProgress(0.0)
+                GADUtil.share.load(.open)
+                GADUtil.share.load(.native)
+                GADUtil.share.load(.interstitial)
                 let publisher = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect().map { _ in
                     Action.update
                 }
@@ -65,10 +70,24 @@ struct Loading {
                     state.updateProgress(1.0)
                     return .run { send in
                         await send(.end)
-                        await send(.launched)
+                        await send(.showLoadingAD)
                     }
                 } else {
                     state.updateProgress(progress)
+                }
+                
+                if progress > 0.3, GADUtil.share.isLoaded(.open) {
+                    state.updateDuration(1.0)
+                }
+            }
+            if case .showLoadingAD = action {
+                let publisher = Future<Action, Never> { promise in
+                    GADUtil.share.show(.open) { _ in
+                        promise(.success(.launched))
+                    }
+                }
+                return .publisher {
+                    publisher
                 }
             }
             return .none

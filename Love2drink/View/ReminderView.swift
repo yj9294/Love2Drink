@@ -8,11 +8,15 @@
 import Foundation
 import SwiftUI
 import ComposableArchitecture
+import GADUtil
 
 @Reducer
 struct Reminder {
     @ObservableState
     struct State: Equatable {
+
+        var ad: GADNativeViewModel = .none
+
         var weekMode: Bool = CacheUtil.getWeekMode()
         mutating func updateMode(_ mode: Bool) {
             weekMode = mode
@@ -99,7 +103,15 @@ struct ReminderView: View {
                     _ReminderListView(store: store)
                 }
                 Spacer()
-            }.background
+                HStack{
+                    WithPerceptionTracking {
+                        GADNativeView(model: store.ad)
+                    }
+                }.padding(.horizontal, 20).frame(height: 116).padding(.bottom, 20)
+            }.background.onAppear{
+                GADUtil.share.disappear(.native)
+                GADUtil.share.load(.native)
+            }
             
             WithPerceptionTracking {
                 if store.showTime {

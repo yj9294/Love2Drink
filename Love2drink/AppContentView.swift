@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import GADUtil
 import ComposableArchitecture
 
 @Reducer
@@ -18,6 +19,10 @@ struct AppContent {
         var isLoading = true
         mutating func updateLoading(_ isLoading: Bool) {
             self.isLoading = isLoading
+            if self.isLoading {
+                loading.progress = 0.0
+                loading.duration = 12.5
+            }
         }
     }
     enum Action: Equatable {
@@ -36,7 +41,9 @@ struct AppContent {
             }
             
             if case .loading(.launched) = action {
-                state.updateLoading(false)
+                if state.loading.progress >= 1.0 {
+                    state.updateLoading(false)
+                }
             }
             return .none
         }
@@ -64,6 +71,10 @@ struct AppContentView: View {
             }
         }.onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification), perform: { _ in
             store.send(.updateLoading(true))
+            store.send(.loading(.start))
+            Task {
+                await GADUtil.share.dismiss()
+            }
         })
     }
 }

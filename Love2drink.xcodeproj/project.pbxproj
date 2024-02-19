@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF8685162B83549500A6FF93 /* GADUtil in Frameworks */ = {isa = PBXBuildFile; productRef = BF8685152B83549500A6FF93 /* GADUtil */; };
+		BF8685192B83551000A6FF93 /* GADNativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8685172B83550F00A6FF93 /* GADNativeView.swift */; };
+		BF86851A2B83551000A6FF93 /* GADConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = BF8685182B83551000A6FF93 /* GADConfig.json */; };
+		BF8685202B8356CB00A6FF93 /* FacebookAEM in Frameworks */ = {isa = PBXBuildFile; productRef = BF86851F2B8356CB00A6FF93 /* FacebookAEM */; };
+		BF8685222B8356CB00A6FF93 /* FacebookBasics in Frameworks */ = {isa = PBXBuildFile; productRef = BF8685212B8356CB00A6FF93 /* FacebookBasics */; };
+		BF8685242B8356CB00A6FF93 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = BF8685232B8356CB00A6FF93 /* FacebookCore */; };
 		BFAFCCBE2B74A54C00C29768 /* NotificationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAFCCBD2B74A54C00C29768 /* NotificationUtil.swift */; };
 		BFAFCCC02B74A89200C29768 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAFCCBF2B74A89200C29768 /* DetailView.swift */; };
 		BFAFCCC22B74AE6E00C29768 /* PrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAFCCC12B74AE6E00C29768 /* PrivacyView.swift */; };
@@ -39,6 +45,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF8685172B83550F00A6FF93 /* GADNativeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GADNativeView.swift; sourceTree = "<group>"; };
+		BF8685182B83551000A6FF93 /* GADConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GADConfig.json; sourceTree = "<group>"; };
+		BF86851D2B83556E00A6FF93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BFAFCCBD2B74A54C00C29768 /* NotificationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUtil.swift; sourceTree = "<group>"; };
 		BFAFCCBF2B74A89200C29768 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		BFAFCCC12B74AE6E00C29768 /* PrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyView.swift; sourceTree = "<group>"; };
@@ -75,7 +84,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF8685202B8356CB00A6FF93 /* FacebookAEM in Frameworks */,
+				BF8685242B8356CB00A6FF93 /* FacebookCore in Frameworks */,
+				BF8685222B8356CB00A6FF93 /* FacebookBasics in Frameworks */,
 				BFEE204C2B71DF9500B152AF /* ComposableArchitecture in Frameworks */,
+				BF8685162B83549500A6FF93 /* GADUtil in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +114,7 @@
 		BFEE203B2B71DB9400B152AF /* Love2drink */ = {
 			isa = PBXGroup;
 			children = (
+				BF86851D2B83556E00A6FF93 /* Info.plist */,
 				BFEE204F2B71E4E300B152AF /* Util */,
 				BFEE204E2B71E30F00B152AF /* Data */,
 				BFEE204D2B71E30F00B152AF /* View */,
@@ -156,6 +170,8 @@
 		BFEE204F2B71E4E300B152AF /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				BF8685182B83551000A6FF93 /* GADConfig.json */,
+				BF8685172B83550F00A6FF93 /* GADNativeView.swift */,
 				BFEE20542B71E59F00B152AF /* AppUtil.swift */,
 				BFEE20642B72401D00B152AF /* CacheUtil.swift */,
 				BFEE20502B71E4ED00B152AF /* Modifier.swift */,
@@ -183,6 +199,10 @@
 			name = Love2drink;
 			packageProductDependencies = (
 				BFEE204B2B71DF9500B152AF /* ComposableArchitecture */,
+				BF8685152B83549500A6FF93 /* GADUtil */,
+				BF86851F2B8356CB00A6FF93 /* FacebookAEM */,
+				BF8685212B8356CB00A6FF93 /* FacebookBasics */,
+				BF8685232B8356CB00A6FF93 /* FacebookCore */,
 			);
 			productName = Love2drink;
 			productReference = BFEE20392B71DB9400B152AF /* Love2drink.app */;
@@ -214,6 +234,8 @@
 			mainGroup = BFEE20302B71DB9400B152AF;
 			packageReferences = (
 				BFEE204A2B71DF9500B152AF /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				BF8685142B83549500A6FF93 /* XCRemoteSwiftPackageReference "gadutil" */,
+				BF86851E2B8356CB00A6FF93 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = BFEE203A2B71DB9400B152AF /* Products */;
 			projectDirPath = "";
@@ -229,6 +251,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF86851A2B83551000A6FF93 /* GADConfig.json in Resources */,
 				BFE17BAD2B74853A00701EA7 /* DatePickerView.xib in Resources */,
 				BFEE20442B71DB9600B152AF /* Preview Assets.xcassets in Resources */,
 				BFEE20412B71DB9600B152AF /* Assets.xcassets in Resources */,
@@ -264,6 +287,7 @@
 				BFEE205B2B72166500B152AF /* DrinkView.swift in Sources */,
 				BFEE20632B7230FC00B152AF /* DrinkModel.swift in Sources */,
 				BFEE20512B71E4ED00B152AF /* Modifier.swift in Sources */,
+				BF8685192B83551000A6FF93 /* GADNativeView.swift in Sources */,
 				BFEE20612B7216F100B152AF /* ProfileView.swift in Sources */,
 				BFEE206D2B73157300B152AF /* RecordView.swift in Sources */,
 				BFEE20572B71E94800B152AF /* LoadingView.swift in Sources */,
@@ -403,6 +427,7 @@
 				DEVELOPMENT_TEAM = 7HH5ZUB44G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Love2drink/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -414,7 +439,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.testbird.Love2drink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -437,6 +462,7 @@
 				DEVELOPMENT_TEAM = 7HH5ZUB44G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Love2drink/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -448,7 +474,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.testbird.Love2drink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -484,6 +510,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BF8685142B83549500A6FF93 /* XCRemoteSwiftPackageReference "gadutil" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yj9294/gadutil.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		BF86851E2B8356CB00A6FF93 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.1.0;
+			};
+		};
 		BFEE204A2B71DF9500B152AF /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture.git";
@@ -495,6 +537,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BF8685152B83549500A6FF93 /* GADUtil */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF8685142B83549500A6FF93 /* XCRemoteSwiftPackageReference "gadutil" */;
+			productName = GADUtil;
+		};
+		BF86851F2B8356CB00A6FF93 /* FacebookAEM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF86851E2B8356CB00A6FF93 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookAEM;
+		};
+		BF8685212B8356CB00A6FF93 /* FacebookBasics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF86851E2B8356CB00A6FF93 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookBasics;
+		};
+		BF8685232B8356CB00A6FF93 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF86851E2B8356CB00A6FF93 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
 		BFEE204B2B71DF9500B152AF /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BFEE204A2B71DF9500B152AF /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;

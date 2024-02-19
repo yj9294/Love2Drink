@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import ComposableArchitecture
+import GADUtil
 
 @Reducer
 struct Home {
@@ -40,6 +41,10 @@ struct Home {
         var medal: Medal.State = .init()
         var profile: Profile.State = .init()
         
+        var drinkImpressionDate: Date = CacheUtil.getImpressionDate(.drink)
+        var chartsImpressionDate: Date = CacheUtil.getImpressionDate(.charts)
+        var reminderImpressionDate: Date = CacheUtil.getImpressionDate(.profile)
+        
         mutating func updatedGoal() {
             let goal = CacheUtil.getGoal()
             drink.goal = goal
@@ -50,7 +55,37 @@ struct Home {
             drink.drinks = drinks
             charts.drinks = drinks
         }
+        
+        mutating func updateADModel(_ ad: GADNativeViewModel) {
+            if item == .drink, ad != .none {
+                if Date().timeIntervalSince1970 - drinkImpressionDate .timeIntervalSince1970 > 10 {
+                    drink.ad = ad
+                    drinkImpressionDate = Date()
+                } else {
+                    debugPrint("[AD] drink 原生广告10s间隔限制")
+                }
+            } else if item == .charts, ad != .none {
+                if Date().timeIntervalSince1970 - chartsImpressionDate.timeIntervalSince1970 > 10 {
+                    charts.ad = ad
+                    chartsImpressionDate = Date()
+                } else {
+                    debugPrint("[AD] charts 原生广告10s间隔限制")
+                }
+            } else if item == .profile, ad != .none {
+                if Date().timeIntervalSince1970 - reminderImpressionDate.timeIntervalSince1970 > 10 {
+                    profile.reminder?.ad = ad
+                    reminderImpressionDate = Date()
+                } else {
+                    debugPrint("[AD] reminder 原生广告10s间隔限制")
+                }
+            } else {
+                drink.ad = .none
+                charts.ad = .none
+                profile.ad = .none
+            }
+        }
     }
+    
     enum Action: Equatable {
         case updateItem(Item)
         
@@ -58,6 +93,9 @@ struct Home {
         case charts(Charts.Action)
         case medal(Medal.Action)
         case profile(Profile.Action)
+        
+        case updateAD(GADNativeViewModel)
+
     }
     
     var body: some Reducer<State, Action> {
@@ -74,6 +112,10 @@ struct Home {
             // recod view 新增饮水记录
             if case .drink(.record(.presented(.updatedDrinks))) = action {
                 state.updatedDrinks()
+            }
+            
+            if case let .updateAD(ad) = action {
+                state.updateADModel(ad)
             }
             return .none
         }
@@ -99,13 +141,18 @@ struct Home {
 struct HomeView: View {
     let store: StoreOf<Home>
     var body: some View {
-        VStack{
-            ScrollView(showsIndicators: false){
+        WithPerceptionTracking {
+            VStack{
                 _ContentView(store: store)
-            }
-            _TabbarItemView(store: store)
-            
-        }.background
+                _TabbarItemView(store: store)
+            }.background.onReceive(NotificationCenter.default.publisher(for: .nativeUpdate), perform: { noti in
+                if let ad = noti.object as? GADNativeModel {
+                    store.send(.updateAD(GADNativeViewModel(model: ad)))
+                } else {
+                    store.send(.updateAD(.none))
+                }
+            })
+        }
     }
     
     struct _ContentView: View {

@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import GADUtil
 import ComposableArchitecture
 
 @Reducer
@@ -51,6 +52,8 @@ struct DailyGoal {
         BindingReducer()
         Reduce{ state, action in
             if case .dismissButtonTapped = action {
+                GADUtil.share.disappear(.native)
+                GADUtil.share.load(.native)
                 return .run { _ in
                   await self.dismiss()
                 }
