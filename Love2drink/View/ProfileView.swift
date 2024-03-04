@@ -99,7 +99,7 @@ struct ProfileView: View {
                                 } else if item == .privacy {
                                     store.send(.presentPrivacy)
                                 } else if item == .rate {
-                                    if let url = URL(string: "") {
+                                    if let url = URL(string: "https://apps.apple.com/app/") {
                                         UIApplication.shared.open(url)
                                     }
                                 }
