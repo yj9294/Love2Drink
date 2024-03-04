@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import ComposableArchitecture
+import AppTrackingTransparency
 
 @Reducer
 struct Home {
@@ -105,7 +106,10 @@ struct HomeView: View {
             }
             _TabbarItemView(store: store)
             
-        }.background
+        }.background.onAppear{
+            ATTrackingManager.requestTrackingAuthorization { _ in
+            }
+        }
     }
     
     struct _ContentView: View {
