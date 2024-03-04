@@ -75,6 +75,8 @@ About children's privacy
 We promise that our applications and services are not suitable for people aged 17 and below. If we find that children under the age of 17 have provided us with personal information, we will immediately delete that information from the server. If you are a parent or guardian and know that your child has provided us with personal information, please contact us and we will actively cooperate.
 Update
 We may update this Privacy Policy on this page.
+Contact us
+lilin623@hotmail.com
 """).font(.system(size: 14)).foregroundStyle(Color.black).lineLimit(nil)
             }.padding(.all, 20)
         }
