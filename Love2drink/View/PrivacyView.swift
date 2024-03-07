@@ -59,7 +59,6 @@ struct PrivacyView: View {
         var body: some View {
             ScrollView{
                 Text("""
-Privacy Policy
 Please read this privacy policy in detail. This Privacy Policy is intended to inform you about the personal data we collect from you. We will use and protect your personal information through formal means and we will legally share your personal information.
 What information will we collect
 In the process of using the application, we may collect the following information: user set water consumption goals and reminder frequencies, as well as water consumption record data. At the same time, our application may also automatically collect some technical information to improve the user experience and application performance, such as device information (model, operating system version, etc.), application usage statistics, IP address, application crash report.
@@ -76,7 +75,7 @@ We promise that our applications and services are not suitable for people aged 1
 Update
 We may update this Privacy Policy on this page.
 Contact us
-lilin623@hotmail.com
+timelock0987@outlook.com
 """).font(.system(size: 14)).foregroundStyle(Color.black).lineLimit(nil)
             }.padding(.all, 20)
         }

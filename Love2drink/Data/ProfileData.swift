@@ -31,11 +31,11 @@ enum TipItem: String, CaseIterable {
     var title: String {
         switch self {
         case .tip1:
-            return "The key to keeping your body hydrated"
+            return "How much water do you need to drink every day?"
         case .tip2:
-            return "Choose which is better, warm or cold"
+            return "The more water you drink, the better it is, which is a mistake"
         case .tip3:
-            return "Scientific drinking time, improve water use efficiency"
+            return "When should I drink water?"
         }
     }
     
@@ -51,28 +51,16 @@ enum TipItem: String, CaseIterable {
         switch self {
         case .tip1:
             return """
-Keeping enough water is essential to good health. Maintaining the body's water balance not only helps eliminate waste and toxins, but also maintains normal physiological functions. Here are some tips to help you keep your body hydrated more scientifically.
-First, understanding your body's needs is fundamental to maintaining a water balance. Each person's water needs are different, depending on factors such as age, sex, weight, activity level and climatic conditions. The scientific method is to adjust the amount of water according to their own conditions, in general, the recommended amount of water for adults is about 8 cups (about 2 liters) per day, but it needs to be moderately increased under high temperature, exercise and other circumstances.
-Secondly, reasonable arrangement of drinking time is the key to maintaining water balance. The first glass of water after you wake up can help clear out nighttime metabolites and activate your body's metabolism. Proper drinking water before and after meals helps to promote digestion and absorption, and it is necessary to replenish water in time during exercise to maintain body fluid balance. Gradually develop a good habit of regular drinking water, help the body to better absorb water, improve the body water use efficiency.
-Finally, it's not just drinking water, the water in food is also an important source of water balance. Eat more fruits, vegetables and other foods rich in water, help to supplement the body needs water. In addition, avoid excessive consumption of caffeine and sugary drinks, as they may cause excessive excretion of urine and affect the body's water balance.
-In short, by understanding your individual needs, rationalizing your drinking time, and supplementing your food with water, you can maintain your body's water balance more scientifically. Maintaining good drinking habits will lay a solid foundation for good health.
+In general, a healthy adult needs between 2000-2300 milliliters of water per day, which is equivalent to 7-8 cups of a regular water glass. However, not all of this water is obtained by drinking water, and the water in food should be included. In fact, the various foods we eat every day contain a lot of water. For example, most vegetables and fruits contain over 90% water, while eggs and fish also contain about 75% water. Roughly estimated, we can consume at least 300-400 milliliters of water from food or soup during a meal. Therefore, after deducting the 1000-1200 milliliters of water intake from food in the three meals, we only need to drink another 1000-1200 milliliters of water every day. On average, 2-3 cups in the morning and 2-3 cups in the afternoon are considered basic skills.
 """
         case .tip2:
             return """
-In daily life, choosing to drink warm water or cold water has always been a topic of concern. In fact, both have their own advantages in different situations. Here are some tips to help you more scientifically choose the right water temperature for maximum health benefits.
-First, warm water helps to boost metabolism. The right amount of warm water can stimulate the gastrointestinal peristalsis, promote the digestion and absorption of food, and help accelerate the metabolic process. This is especially important for people who want to control their weight or improve indigestion. Therefore, drinking a glass of warm water after waking up in the morning can quickly wake up the body and provide energy for the day's activities.
-Secondly, cold water is more advantageous during hot weather or after strenuous exercise. The right amount of cold water can quickly lower the body temperature and relieve the temperature rise caused by hot weather or exercise. In addition, cold water also helps to constrict blood vessels and improve blood circulation, which helps to relieve fatigue.
-However, it is necessary to choose according to the individual's physique and preferences. Some people prefer warm water because it is more gentle and comfortable; Some people prefer cold water because it can bring a refreshing feeling. In daily life, warm water and cold water can be alternately selected according to the specific situation to meet the individual taste and needs.
-In general, warm and cold water each have their own application, according to personal preferences and actual needs, to help better enjoy the health benefits of drinking water.
+Many people believe that drinking too much water every day is actually harmful and not beneficial. Because the human body is a balanced system, the kidneys can only excrete 800-1000 milliliters of water per hour. Drinking more than 1000 milliliters of water within an hour can lead to hyponatremia. Moreover, drinking too much water can lead to electrolyte imbalance (significant loss of sodium and potassium ions), as well as easy loss of water-soluble vitamins (such as Group B and C). Nutrition experts point out that drinking water should be like consuming calories, "replenish as much as you need".
+Usually, the amount of water each person needs to drink varies depending on their activity level, environment, and even weather conditions. Drinking too much water for a normal person will not have a significant impact on their health, but it may lead to increased urine output and inconvenience in daily life. However, for certain special groups of people, special attention must be paid to the amount of water they drink. For example, patients with edema, heart failure, and kidney failure should not drink too much water because drinking too much water can increase the burden on the heart and kidneys, which can easily lead to worsening of the condition. The amount of water these people should drink should depend on their condition and listen to the doctor's specific advice.
 """
         case .tip3:
             return """
-Drinking water is a basic need to maintain life, and scientific and reasonable drinking time is also crucial. Here are some tips to help you time your water more scientifically, improve the efficiency of water use in your body, and thus better maintain your health.
-First of all, waking up in the morning is the best time of day to drink water. At this point, the body has just spent the night and is already in a state of dehydration. Drinking a glass of warm water can quickly wake up the body, activate the metabolism, and provide energy for the day's activities.
-Secondly, proper drinking water before and after meals helps to promote digestion and absorption. Drinking the right amount of water 30 minutes before and after meals helps to slow the speed of food passing through the gastrointestinal tract, improve the efficiency of food digestion, and thus better absorb nutrients.
-During exercise, it is very important to hydrate properly. A lot of exercise causes the body to sweat a lot and lose water. Therefore, before, during and after exercise, it is necessary to drink adequate amounts of water to maintain fluid balance and prevent dehydration.
-Drinking a moderate amount of water before going to bed at night is also a scientific healthy habit. The right amount of water helps relieve thirst at night, maintain the body's water balance, and promote good sleep quality.
-Through reasonable arrangement of drinking time, it helps to better meet the physiological needs of the body, improve water use efficiency, and promote health. It is recommended to scientifically and reasonably arrange daily drinking time according to personal living habits and actual situation to provide a full range of water support for the body.
+As for the drinking time, experts suggest that we should drink water in moderation between meals, preferably every hour. People can also judge whether they need to drink water based on the color of their urine. Generally speaking, human urine is light yellow. If the color is too light, it may be due to drinking too much water. If the color is too dark, it indicates that more water needs to be added. Drinking less before bedtime and more after bedtime is also the correct principle for drinking water, because drinking too much water before bedtime can cause eye swelling and frequent urination in the middle of the night, resulting in poor sleep quality. After a night of sleep, the human body loses about 450 milliliters of water, which needs to be replenished in a timely manner in the morning. Therefore, drinking a glass of water on an empty stomach after waking up in the morning is beneficial for blood circulation and can also promote brain wakefulness, making the thinking clear and agile for the day.
 """
         }
     }
