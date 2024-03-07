@@ -9,7 +9,7 @@ import ComposableArchitecture
 import SwiftUI
 import GADUtil
 import Combine
-
+import AppTrackingTransparency
 
 @Reducer
 struct Drink{
@@ -130,6 +130,11 @@ struct DrinkView: View {
                 store.send(.startRotation)
                 GADUtil.share.disappear(.native)
                 GADUtil.share.load(.native)
+                Task{ @MainActor in
+                    try await Task.sleep(nanoseconds: 4_000_000_000)
+                    ATTrackingManager.requestTrackingAuthorization { _ in
+                    }
+                }
             }).onDisappear(perform: {
                 store.send(.stopRotation)
             }).fullScreenCover(item: $store.scope(state: \.dailyGoal, action: \.dailyGoal)) { store in
