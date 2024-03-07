@@ -7,29 +7,29 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb</string>
+				<string>fb1519120121980721</string>
 			</array>
 		</dict>
 	</array>
+	<key>FacebookAdvertiserIDCollectionEnabled</key>
+	<true/>
+	<key>FacebookAppID</key>
+	<string>1519120121980721</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<true/>
+	<key>FacebookClientToken</key>
+	<string>2ca9f48bd1005094c767c24f386929f3</string>
+	<key>FacebookDisplayName</key>
+	<string>Love2Drink</string>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-9282422831342205~4354841032</string>
+	<key>GADIsAdManagerApp</key>
+	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>FacebookAdvertiserIDCollectionEnabled</key>
-	<true/>
-	<key>FacebookAppID</key>
-	<string></string>
-	<key>FacebookAutoLogAppEventsEnabled</key>
-	<true/>
-	<key>FacebookClientToken</key>
-	<string></string>
-	<key>FacebookDisplayName</key>
-	<string>Love2Drink</string>
-	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-3940256099942544~1458002511</string>
-	<key>GADIsAdManagerApp</key>
-	<true/>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -40,7 +40,5 @@
 			<array/>
 		</dict>
 	</dict>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>Please allow access to your activity tracking to provide personalized push services and reduce interference caused by irrelevant services.</string>
 </dict>
 </plist>
